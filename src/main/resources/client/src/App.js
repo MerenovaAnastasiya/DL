@@ -1,20 +1,27 @@
 import React from 'react';
 import { Navbar, Footer, NavItem } from 'react-materialize';
 import RegisterForm from './components/RegisterForm';
+import Main from './components/Main';
+import { Route, Switch, Link } from 'react-router-dom';
 import './App.css';
 
 function App() {
     return (
-      <div className="App">
+      <div className='app'>
         <Navbar brand={<a />} alignLinks="right">
-          <NavItem href="register">
-            Getting started
+          <NavItem>
+            <Link to='/register'> Registration </Link>
           </NavItem>
-          <NavItem href="">
-            Components
+          <NavItem>
+            <Link to='/home'> Home </Link>
           </NavItem>
         </Navbar>
-        <RegisterForm/>
+        <div className='container'>
+          <Switch>
+            <Route path='/register' component={RegisterForm} />
+            <Route path='/' component={Main} />
+          </Switch>
+        </div>
         <Footer
           copyrights="&copy 2019 Copyright Text"
           moreLinks={<a />}

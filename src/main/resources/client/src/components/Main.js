@@ -7,8 +7,10 @@ function Main() {
   };
 
   return (
-    <div className="container" style={divStyle}>
-
+    <div style={divStyle}>
+      <h1>
+        Hello, thx for visit our library
+      </h1> 
     </div>
   )
 }
