@@ -5,6 +5,7 @@ import com.mereder.models.User;
 import com.mereder.services.UserService;
 import com.mereder.util.exceptions.SaveErrorException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SecurityController {
     @Autowired
     private UserService userService;
+
 
     @PostMapping("/registration")
     public String registration(@RequestParam(value = "login") String login,
