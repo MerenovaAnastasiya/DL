@@ -1,7 +1,6 @@
 import React from 'react';
 import { Autocomplete } from 'react-materialize';
 
-
 class SearchForm extends React.Component {
 
     constructor(props) {
@@ -38,4 +37,4 @@ class SearchForm extends React.Component {
 
 }
 
-export default SearchEngine;
+export default SearchForm;
