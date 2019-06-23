@@ -28,7 +28,7 @@ class RegisterForm extends React.Component {
 
   render() {
       return (
-      <div className='container'>
+      <div className='min-height-block'>
         <Row>
           <Col s={3}>
             <div>

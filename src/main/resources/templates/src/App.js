@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Footer, NavItem } from 'react-materialize';
+import { Navbar, Footer } from 'react-materialize';
 import RegisterForm from './components/RegisterForm';
 import Main from './components/Main';
 import { Route, Switch, Link } from 'react-router-dom';
@@ -8,13 +8,10 @@ import './App.css';
 function App() {
     return (
       <div className='app'>
-        <Navbar brand={<a />} alignLinks="right">
-          <NavItem>
-            <Link to='/register'> Registration </Link>
-          </NavItem>
-          <NavItem>
-            <Link to='/home'> Home </Link>
-          </NavItem>
+        <Navbar brand={<Link to='/'>DL </Link>}
+          alignLinks="right">
+          <Link to='/register'> Registration </Link>
+          <Link to='/'> Home </Link>
         </Navbar>
         <div className='container'>
           <Switch>
@@ -24,7 +21,6 @@ function App() {
         </div>
         <Footer
           copyrights="&copy 2019 Copyright Text"
-          moreLinks={<a />}
           links={<ul />}
           className="example"
         >

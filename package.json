@@ -8,9 +8,11 @@
     "react-dom": "^16.8.6",
     "react-materialize": "^3.3.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "webpack": "^4.35.0"
   },
   "scripts": {
+    "watch": "webpack --watch -d",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

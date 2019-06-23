@@ -1,13 +1,13 @@
 var path = require('path');
 
 module.exports = {
-    entry: '/src/main/resources/templates/src/index.js',
+    entry: './src/main/resources/templates/src/App.js',
     devtool: 'sourcemaps',
-    cache: true,
+    cache: false,
     mode: 'development',
     output: {
         path: __dirname,
-        filename: '/src/main/resources/static/built/bundle.js'
+        filename: './src/main/resources/static/built/bundle.js'
     },
     module: {
         rules: [

@@ -14,10 +14,13 @@ import java.util.Map;
 
 @Service
 public class UserService {
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private MessageSource messageSource;
+    private final UserRepository userRepository;
+    private final MessageSource messageSource;
+
+    public UserService(UserRepository userRepository, MessageSource messageSource) {
+        this.userRepository = userRepository;
+        this.messageSource = messageSource;
+    }
 
     public void save(RegistrationForm form) throws SaveErrorException {
         if(userRepository.findOneByLogin(form.getLogin()) != null) {
