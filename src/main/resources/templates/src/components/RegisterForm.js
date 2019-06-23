@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { TextInput, Row, Col } from 'react-materialize';
 
 class RegisterForm extends React.Component {
@@ -6,6 +7,7 @@ class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { login: '', password: '' };
+    axios.defaults.baseURL = 'http://localhost:8080/';
 
     this.setLogin = this.setLogin.bind(this);
     this.setPassword = this.setPassword.bind(this);
@@ -13,9 +15,20 @@ class RegisterForm extends React.Component {
   }
 
   register(event) {
-    // TODO ajax request
-    console.log(this.state)
-    event.preventDefault(); 
+      console.log(`${axios.defaults.baseURL}/users`);
+      axios.post(`${axios.defaults.baseURL}/users`,{login: this.state.login, password: this.state.password})
+          .then(
+            res => {
+              console.log(res)
+            }
+        )
+          .catch(
+            res => {
+              alert(res)
+            }
+       )
+      console.log(this.state);
+      event.preventDefault();
   }
 
   setLogin(event) {

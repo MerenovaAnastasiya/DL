@@ -32,3 +32,5 @@ node_modules
 
 # Properties
 src/main/resources/application.properties
+# Generated and combined js
+src/main/resources/static/built/bundle.js

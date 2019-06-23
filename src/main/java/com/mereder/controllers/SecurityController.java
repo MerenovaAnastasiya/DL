@@ -5,26 +5,26 @@ import com.mereder.models.User;
 import com.mereder.services.UserService;
 import com.mereder.util.exceptions.SaveErrorException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+import java.util.logging.Logger;
 
 @RestController
 public class SecurityController {
+    Logger logger = Logger.getLogger(String.valueOf(SecurityController.class));
     private final UserService userService;
 
     public SecurityController(UserService userService) {
         this.userService = userService;
     }
 
-
-    @PostMapping("/registration")
-    public String registration(@RequestParam(value = "login") String login,
-                               @RequestParam(value = "password") String password){
+    @PostMapping("/users")
+    public String registration(@RequestBody Map<String, Object> json){
+        logger.info(json.get("login") + "  " + json.get("password"));
         try {
             //accept already encrypted password
-            userService.save(new RegistrationForm(login, password));
+            userService.save(new RegistrationForm((String) json.get("login"), (String) json.get("password")));
         }
         catch (SaveErrorException exception){
 
