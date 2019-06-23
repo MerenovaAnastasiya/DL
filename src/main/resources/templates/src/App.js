@@ -3,7 +3,6 @@ import { Navbar, Footer } from 'react-materialize';
 import RegisterForm from './components/RegisterForm';
 import Main from './components/Main';
 import { Route, Switch, Link } from 'react-router-dom';
-import './App.css';
 
 function App() {
     return (

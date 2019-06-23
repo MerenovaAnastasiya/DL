@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import SearchEngine from './SearchEngine';
-
+import SearchForm from './SearchForm';
 function Main() {
 
   return (
@@ -10,7 +9,7 @@ function Main() {
         Hello, thx for visit our library
       </h1>
       <Route exact path='/'>
-        <SearchEngine/>
+        <SearchForm/>
       </Route>
     </div>
   )
