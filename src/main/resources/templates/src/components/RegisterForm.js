@@ -7,7 +7,7 @@ class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { login: '', password: '' };
-    axios.defaults.baseURL = 'http://localhost:8080/';
+    axios.defaults.baseURL = 'http://localhost:8080';
 
     this.setLogin = this.setLogin.bind(this);
     this.setPassword = this.setPassword.bind(this);
@@ -15,7 +15,6 @@ class RegisterForm extends React.Component {
   }
 
   register(event) {
-      console.log(`${axios.defaults.baseURL}/users`);
       axios.post(`${axios.defaults.baseURL}/users`,{login: this.state.login, password: this.state.password})
           .then(
             res => {
@@ -42,17 +41,19 @@ class RegisterForm extends React.Component {
   render() {
       return (
       <div className='min-height-block'>
-        <Row>
-          <Col s={3}>
-            <div>
-              <form onSubmit={this.register}>
-                <TextInput placeholder="Login" onInput={this.setLogin} />
-                <TextInput password placeholder="Password" onInput={this.setPassword} />
-                <input type='submit' className='btn'/>
-              </form>  
-            </div>
-          </Col>
-        </Row>
+          <div className='container' style={{paddingTop: 80}}>
+            <Row>
+              <Col s={3}>
+                <div>
+                  <form onSubmit={this.register}>
+                    <TextInput placeholder="Login" onInput={this.setLogin} />
+                    <TextInput password placeholder="Password" onInput={this.setPassword} />
+                    <input type='submit' className='btn'/>
+                  </form>
+                </div>
+              </Col>
+            </Row>
+          </div>
       </div>
     )
   }
