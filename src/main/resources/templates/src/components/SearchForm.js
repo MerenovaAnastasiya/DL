@@ -29,8 +29,8 @@ class SearchForm extends React.Component {
         return (
             <form onSubmit={this.findBookByName}>
             <Autocomplete
-        options={this.state.popular}
-        placeholder='Find somethink, or choose popular' />
+                options={this.state.popular}
+                placeholder='Find somethink, or choose popular' />
             </form>
     )
     }

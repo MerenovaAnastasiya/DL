@@ -1,26 +1,29 @@
-.App {
-    text-align: center;
+.topBar {
+    background-color: rgba(255, 255, 255, 0.05);
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 40vmin;
-    pointer-events: none;
-}
-
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
+.flex-column {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
 }
 
-.App-link {
-    color: #61dafb;
+.bottomBar {
+
+}
+
+.full-width-height {
+    width: 100%;
+    height: 100%;
+}
+
+.background-image-shelf {
+    background-image: url("images/books-2.jpg");
+    background-repeat: no-repeat;
 }
 
 @keyframes App-logo-spin {
@@ -35,7 +38,7 @@
 @media only screen and (min-width: 992px) {
 
     .min-height-block {
-        min-height: 700px;
+        min-height: 900px;
     }
 
 }
@@ -43,15 +46,7 @@
 @media (min-width: 768px) and (max-width: 991px) {
 
     .min-height-block {
-        min-height: 500px;
-    }
-
-}
-
-@media only screen and (max-width: 767px) {
-
-    .min-height-block {
-        min-height: 400px;
+        min-height: 700px;
     }
 
 }
@@ -59,7 +54,7 @@
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 
     .min-height-block {
-        min-height: 200px;
+        min-height: 500px;
     }
 
 }

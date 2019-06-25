@@ -1,27 +1,26 @@
 import React from 'react';
 import { Navbar, Footer } from 'react-materialize';
 import RegisterForm from './components/RegisterForm';
+import BookShelf from './components/BookShelf';
 import Main from './components/Main';
 import { Route, Switch, Link } from 'react-router-dom';
 
 function App() {
     return (
-      <div className='app'>
-        <Navbar brand={<Link to='/'>DL </Link>}
-          alignLinks="right">
-          <Link to='/register'> Registration </Link>
-          <Link to='/'> Home </Link>
-        </Navbar>
-        <div className='container'>
-          <Switch>
-            <Route path='/register' component={RegisterForm} />
-            <Route path='/' component={Main} />
-          </Switch>
-        </div>
+        <div className='app'>
+            <Navbar className='topBar'
+              alignLinks="right">
+              <Link to='/register'> Registration </Link>
+              <Link to='/'> Home </Link>
+            </Navbar>
+            <Switch>
+              <Route path='/register' component={RegisterForm} />
+              <Route path='/' render={()=>{return ( <div> <Main/><BookShelf/> </div>)}} />
+            </Switch>
         <Footer
           copyrights="&copy 2019 Copyright Text"
           links={<ul />}
-          className="example"
+          className="brown"
         >
           <h5 className="white-text">
             Footer Content
