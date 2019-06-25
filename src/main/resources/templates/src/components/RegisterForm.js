@@ -1,41 +1,48 @@
 import React from 'react';
 import axios from 'axios';
 import { TextInput, Row, Col } from 'react-materialize';
+import M from '../materialize';
 
 class RegisterForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { login: '', password: '' };
+    this.state = { login: '', password: '', secondPassword: '' };
+    this.setRef = element => {
+        this.submitButton = element;
+    };
     axios.defaults.baseURL = 'http://localhost:8080';
 
-    this.setLogin = this.setLogin.bind(this);
-    this.setPassword = this.setPassword.bind(this);
+    this.set = this.set.bind(this);
     this.register = this.register.bind(this);
+    this.checkPasswords = this.checkPasswords.bind(this);
   }
 
   register(event) {
       axios.post(`${axios.defaults.baseURL}/users`,{login: this.state.login, password: this.state.password})
           .then(
             res => {
-              console.log(res)
+            //    TODO REDUX or Some other way to global storage
+                console.log(res);
             }
         )
           .catch(
-            res => {
-              alert(res)
-            }
-       )
-      console.log(this.state);
+            error => {
+                const ers = error.response.data.errors;
+                for ( let elem in ers ) {
+                    M.toast({html: ers[elem]})
+                }
+            })
+      ;
       event.preventDefault();
   }
 
-  setLogin(event) {
-    this.setState({ 'login': event.target.value})
+  set(event) {
+      const {id, value} = event.target;
+      this.setState({ [id]: value }, this.checkPasswords);
   }
-
-  setPassword(event) {
-    this.setState({ 'password': event.target.value})
+  checkPasswords() {
+      this.submitButton.disabled = !(this.state.secondPassword === this.state.password);
   }
 
   render() {
@@ -46,9 +53,10 @@ class RegisterForm extends React.Component {
               <Col s={3}>
                 <div>
                   <form onSubmit={this.register}>
-                    <TextInput placeholder="Login" onInput={this.setLogin} />
-                    <TextInput password placeholder="Password" onInput={this.setPassword} />
-                    <input type='submit' className='btn'/>
+                    <TextInput id='login' placeholder="Login" onInput={this.set} />
+                    <TextInput id='password' password placeholder="Password" onInput={this.set} />
+                    <TextInput id='secondPassword' password placeholder="Password confirmation" onInput={this.set} />
+                    <input ref={this.setRef} type='submit' className='btn' />
                   </form>
                 </div>
               </Col>
