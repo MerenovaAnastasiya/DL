@@ -7,7 +7,7 @@ class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { login: '', password: '' };
-    axios.defaults.baseURL = 'http://localhost:8080/';
+    axios.defaults.baseURL = 'http://localhost:8080';
 
     this.setLogin = this.setLogin.bind(this);
     this.setPassword = this.setPassword.bind(this);
