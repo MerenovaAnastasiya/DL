@@ -19,12 +19,11 @@ public class InvalidArgumentExceptionHandler extends ResponseEntityExceptionHand
                                                                   HttpHeaders headers,
                                                                   HttpStatus status,
                                                                   WebRequest request) {
-        Map<String, Object> errors = new HashMap<>();
+        Map<String, String> errors = new HashMap<>();
         for(FieldError error: ex.getBindingResult().getFieldErrors()) {
             errors.put(error.getField(), error.getDefaultMessage());
         }
-        Map<String, Object> body = new HashMap<>();
-        body.put("errors", errors);
+        BadRequest body = new BadRequest(errors);
         return new ResponseEntity<>(body, headers, status);
 
     }

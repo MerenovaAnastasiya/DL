@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class NewUserDto {
+public class LoginUserDto {
     private String login;
     private String sessionId;
 }

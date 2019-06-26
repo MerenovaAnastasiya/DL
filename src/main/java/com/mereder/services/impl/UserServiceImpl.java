@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     public User registration(RegistrationForm form) throws SaveErrorException {
         if(userRepository.findOneByLogin(form.getLogin()) != null) {
             Map<String, String> errors = new HashMap<>();
-            errors.put("loginAlreadyInUse", messageSource.getMessage("login.inUse", null, Locale.getDefault()));
+            errors.put("login", messageSource.getMessage("login.inUse", null, Locale.getDefault()));
             throw new SaveErrorException(errors);
         }
         User user = new User();

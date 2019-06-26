@@ -1,6 +1,6 @@
 package com.mereder.controllers;
 
-import com.mereder.dto.NewUserDto;
+import com.mereder.dto.LoginUserDto;
 import com.mereder.entities.User;
 import com.mereder.errors.BadRequest;
 import com.mereder.forms.RegistrationForm;
@@ -26,14 +26,13 @@ public class RegistrationController {
         this.userService = userService;
     }
 
-//
 
     @PostMapping(value = "/users", produces = "application/json")
-    public ResponseEntity<Object> registration(@Valid @RequestBody RegistrationForm form, HttpSession session){
+    public ResponseEntity<?> registration(@Valid @RequestBody RegistrationForm form, HttpSession session){
         try {
             User user = userService.registration(form);
             return ResponseEntity.ok(
-                    NewUserDto.builder().
+                    LoginUserDto.builder().
                     login(user.getLogin()).
                     sessionId(session.getId()).build());
         } catch (SaveErrorException e) {
