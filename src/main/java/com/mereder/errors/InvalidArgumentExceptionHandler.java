@@ -23,8 +23,7 @@ public class InvalidArgumentExceptionHandler extends ResponseEntityExceptionHand
         for(FieldError error: ex.getBindingResult().getFieldErrors()) {
             errors.put(error.getField(), error.getDefaultMessage());
         }
-        BadRequest body = new BadRequest(errors);
-        return new ResponseEntity<>(body, headers, status);
+        return new ResponseEntity<>(new BadRequest(errors), headers, status);
 
     }
 }

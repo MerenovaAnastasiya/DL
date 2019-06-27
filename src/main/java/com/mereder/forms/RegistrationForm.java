@@ -3,14 +3,15 @@ package com.mereder.forms;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegistrationForm {
-    @NotEmpty(message = "Поле логин не может быть пустым")
+
+    @NotBlank
     private  String login;
-    @NotEmpty(message = "Поле пароль не может быть пустым")
+    @NotBlank
     private  String password;
 }
