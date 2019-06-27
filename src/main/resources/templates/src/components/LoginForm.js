@@ -1,19 +1,18 @@
 import React from 'react';
-import auth from '../services/Authorization';
-import {TextInput, Row, Col} from 'react-materialize';
-import M from '../materialize';
+import auth from "../services/Authorization";
+import M from "../materialize";
+import {Col, Row, TextInput} from "react-materialize";
 
-class RegisterForm extends React.Component {
+export default class LoginForm extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             ...props.user
-        };
+        }
+        this.login = this.login.bind(this);
         this.setLogin = this.setLogin.bind(this);
         this.setPassword = this.setPassword.bind(this);
-        this.setSecondPassword = this.setSecondPassword.bind(this);
-        this.register = this.register.bind(this);
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -22,9 +21,9 @@ class RegisterForm extends React.Component {
         };
     }
 
-    register(event) {
+    login(event) {
         event.preventDefault();
-        auth.register({login: this.state.login, password: this.state.password})
+        auth.login({login: this.state.login, password: this.state.password})
             .then(
                 res => {
                     this.props.addSession(res.data.sessionId);
@@ -50,10 +49,6 @@ class RegisterForm extends React.Component {
         this.props.addPassword(event.target.value);
     }
 
-    setSecondPassword(event) {
-        this.props.addSecondPassword(event.target.value);
-    }
-
     render() {
         return (
             <div className='min-height-block'>
@@ -66,9 +61,7 @@ class RegisterForm extends React.Component {
                                                onChange={this.setLogin}/>
                                     <TextInput password placeholder="Password"
                                                onChange={this.setPassword}/>
-                                    <TextInput password placeholder="Password confirmation"
-                                               onChange={this.setSecondPassword}/>
-                                    <input type='submit' className='btn' style={{right: 5}}/>
+                                    <input type='submit' className='btn'/>
                                 </form>
                             </div>
                         </Col>
@@ -77,7 +70,4 @@ class RegisterForm extends React.Component {
             </div>
         )
     }
-
 }
-
-export default RegisterForm;
