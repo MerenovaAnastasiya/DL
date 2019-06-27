@@ -6,8 +6,8 @@ import LoginForm from "../components/LoginForm";
 import * as M from "../materialize";
 import { connect } from 'react-redux'
 import { bindActionCreators } from "redux";
-import * as actions from '../actions/actions';
-import {getUser} from "../reducers/reducer";
+import * as actions from '../actions/userActions';
+import {getUser} from "../reducers/userReducer";
 
 class Top extends React.Component {
 
@@ -26,7 +26,8 @@ class Top extends React.Component {
         const { user } = this.props;
         return (
             <Navbar className='topBar'
-                    alignLinks="right">
+                    alignLinks="right"
+            >
                 <Modal header="Introduce yourself" trigger={<Link to='/registration'> Log In </Link>}>
                     <Tabs className="tab-demo z-depth-1"
                     >

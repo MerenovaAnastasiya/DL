@@ -8,11 +8,15 @@ class RegisterForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ...props.user
+            login: '',
+            password: '-',
+            secondPassword: '+'
         };
-        this.setLogin = this.setLogin.bind(this);
-        this.setPassword = this.setPassword.bind(this);
-        this.setSecondPassword = this.setSecondPassword.bind(this);
+        this.ref = element => {
+            this.input = element
+        };
+        this.set = this.set.bind(this);
+        this.checkPasswords = this.checkPasswords.bind(this);
         this.register = this.register.bind(this);
     }
 
@@ -28,7 +32,7 @@ class RegisterForm extends React.Component {
             .then(
                 res => {
                     this.props.addSession(res.data.sessionId);
-                    M.toast({html: 'Login success!', classes: 'green white-text rounded'});
+                    M.toast({html: 'Registration success!', classes: 'green white-text rounded'});
                 }
             )
             .catch(
@@ -42,16 +46,15 @@ class RegisterForm extends React.Component {
         ;
     }
 
-    setLogin(event) {
-        this.props.addLogin(event.target.value);
+    set(event) {
+        const { id, value } = event;
+        this.setState({
+            [id]: value
+        })
     }
 
-    setPassword(event) {
-        this.props.addPassword(event.target.value);
-    }
-
-    setSecondPassword(event) {
-        this.props.addSecondPassword(event.target.value);
+    checkPasswords() {
+        this.input.disabled = !(this.state.secondPassword === this.state.password)
     }
 
     render() {
@@ -62,13 +65,16 @@ class RegisterForm extends React.Component {
                         <Col s={4}>
                             <div>
                                 <form onSubmit={this.register}>
-                                    <TextInput placeholder="Login"
-                                               onChange={this.setLogin}/>
-                                    <TextInput password placeholder="Password"
-                                               onChange={this.setPassword}/>
-                                    <TextInput password placeholder="Password confirmation"
-                                               onChange={this.setSecondPassword}/>
-                                    <input type='submit' className='btn' style={{right: 5}}/>
+                                    <TextInput id={'login'}
+                                               placeholder="Login"
+                                               onChange={this.set}/>
+                                    <TextInput id={'password'}
+                                               password placeholder="Password"
+                                               onChange={this.set}/>
+                                    <TextInput id={'secondPassword'}
+                                               password placeholder="Password confirmation"
+                                               onChange={this.set}/>
+                                    <input ref={this.ref} type='submit' className='btn' disabled={true} />
                                 </form>
                             </div>
                         </Col>
@@ -77,7 +83,6 @@ class RegisterForm extends React.Component {
             </div>
         )
     }
-
 }
 
 export default RegisterForm;
