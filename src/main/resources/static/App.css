@@ -12,6 +12,12 @@
     justify-content: center;
 }
 
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
 .bottomBar {
 
 }
@@ -34,7 +40,21 @@
     background-color: teal !important;
 }
 
-@media only screen and (min-width: 992px) {
+.indicator-item {
+    background-color: #ffcdd2 !important;
+}
+
+.indicator-item.active {
+    background-color: #d32f2f !important;
+}
+
+.books {
+    width: 100%;
+    height: 100%;
+    padding: 10%;
+}
+
+@media (min-width: 992px) {
 
     .min-height-block {
         min-height: 900px;
@@ -50,7 +70,7 @@
 
 }
 
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+@media (max-width: 767px) {
 
     .min-height-block {
         min-height: 500px;
