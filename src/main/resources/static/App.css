@@ -54,6 +54,14 @@
     padding: 10%;
 }
 
+input, select, textarea{
+    color: #FFFFFF !important;
+}
+
+textarea:focus, input:focus {
+    color: #FFFFFF !important;
+}
+
 @media (min-width: 992px) {
 
     .min-height-block {
