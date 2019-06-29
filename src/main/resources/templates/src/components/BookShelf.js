@@ -8,7 +8,6 @@ export default class BookShelf extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className='card horizontal z-depth-1' title={this.state.title}>
                 <div className="card-image">

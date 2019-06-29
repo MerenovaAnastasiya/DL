@@ -19,9 +19,12 @@ class BookCase extends React.Component {
         M.Carousel.init(this);
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        M.Carousel.init(this);
+    }
+
     render() {
         const {books} = this.props;
-        console.log(books);
         return (
             <div className='min-height-block'>
                 <div className="books">

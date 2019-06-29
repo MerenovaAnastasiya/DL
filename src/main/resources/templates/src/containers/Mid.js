@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from "./Main";
+import Map from './Map'
 import BookCase from "./BookCase";
 import {Switch, Route} from "react-router-dom";
 
@@ -9,7 +10,7 @@ export default class Mid extends React.Component {
         return (
             <Switch>
                 <Route path='/' render={() => {
-                    return (<div><Main/><BookCase/></div>)
+                    return (<div><Main/><BookCase/><Map/></div>)
                 }}/>
             </Switch>
         )
