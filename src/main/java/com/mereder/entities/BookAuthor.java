@@ -1,15 +1,18 @@
 package com.mereder.entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
+
 
 @Entity
 @Data
-@Table(name="library_user")
-public class User {
-
+@NoArgsConstructor
+@Table(name = "author")
+public class BookAuthor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
@@ -17,13 +20,11 @@ public class User {
 
     @Column
     @NotNull
-    private String login;
+    private String name;
 
     @Column
-    @NotNull
-    private String password;
+    private String surname;
 
-    @Transient
-    private String sessionId;
-
+    @ManyToMany(mappedBy = "authors")
+    private Set<Book> books;
 }

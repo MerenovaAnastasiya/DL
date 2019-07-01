@@ -4,10 +4,10 @@ import lombok.Data;
 import java.util.Map;
 
 @Data
-public class SaveErrorException extends Exception {
+public class FormErrorException extends Exception {
     private Map<String, String> errors;
 
-    public  SaveErrorException(Map<String, String> errors){
+    public FormErrorException(Map<String, String> errors){
         this.errors = errors;
     }
 }

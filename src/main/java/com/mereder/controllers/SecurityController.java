@@ -3,9 +3,10 @@ package com.mereder.controllers;
 import com.mereder.dto.LoginUserDto;
 import com.mereder.entities.User;
 import com.mereder.errors.BadRequest;
+import com.mereder.forms.LoginForm;
 import com.mereder.forms.RegistrationForm;
 import com.mereder.services.UserService;
-import com.mereder.util.exceptions.SaveErrorException;
+import com.mereder.util.exceptions.FormErrorException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +17,13 @@ import javax.validation.Valid;
 import java.util.logging.Logger;
 
 @RestController
-public class RegistrationController {
-    Logger logger = Logger.getLogger(String.valueOf(RegistrationController.class));
+public class SecurityController {
+    Logger logger = Logger.getLogger(String.valueOf(SecurityController.class));
 
     @Autowired
     private final UserService userService;
 
-    public RegistrationController(UserService userService) {
+    public SecurityController(UserService userService) {
         this.userService = userService;
     }
 
@@ -35,7 +36,7 @@ public class RegistrationController {
                     LoginUserDto.builder().
                     login(user.getLogin()).
                     sessionId(session.getId()).build());
-        } catch (SaveErrorException e) {
+        } catch (FormErrorException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new BadRequest(e.getErrors()));
         }
     }

@@ -1,17 +1,6 @@
 package com.mereder.forms;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import javax.validation.constraints.NotBlank;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class RegistrationForm {
+public class RegistrationForm extends UserEntranceForm {
 
-    @NotBlank
-    private  String login;
-    @NotBlank
-    private  String password;
 }
