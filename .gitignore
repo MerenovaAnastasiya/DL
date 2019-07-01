@@ -34,3 +34,5 @@ node_modules
 src/main/resources/application.properties
 # Generated and combined js
 src/main/resources/static/built/bundle.js
+# JS constants file for API's
+constants.js
