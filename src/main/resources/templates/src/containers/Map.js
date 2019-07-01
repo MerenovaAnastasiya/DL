@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 import Marker from '../components/Marker';
 import {Row, Col} from 'react-materialize';
+import {API_KEY} from "../services/constants";
 
 // Return map bounds based on list of places
 const getMapBounds = (map, maps, places) => {
@@ -97,7 +98,7 @@ class Map extends React.Component {
                     <div className="container">
                         <div className='min-height-block' style={{height: '700px'}}>
                             <GoogleMapReact
-                                bootstrapURLKeys={{key: '/* ASK from Aider */'}}
+                                bootstrapURLKeys={{key: API_KEY}}
                                 defaultCenter={this.state.center}
                                 defaultZoom={this.state.zoom}
                                 yesIWantToUseGoogleMapApiInternals

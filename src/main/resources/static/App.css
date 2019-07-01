@@ -54,11 +54,11 @@
     padding: 10%;
 }
 
-input, select, textarea{
+input.autocomplete, select.autocomplete, textarea.autocomplete {
     color: #FFFFFF !important;
 }
 
-textarea:focus, input:focus {
+textarea.autocomplete:focus, input.autocomplete:focus {
     color: #FFFFFF !important;
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import auth from "../services/Authorization";
+import {Authorization} from "../services/Authorization";
 import M from "../materialize";
 import {Col, Row, TextInput} from "react-materialize";
 
@@ -8,22 +8,16 @@ export default class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ...props.user
-        }
-        this.login = this.login.bind(this);
-        this.setLogin = this.setLogin.bind(this);
-        this.setPassword = this.setPassword.bind(this);
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        this.state = {
-            ...this.props.user
+            login: '',
+            password: ''
         };
+        this.login = this.login.bind(this);
+        this.set = this.set.bind(this);
     }
 
     login(event) {
         event.preventDefault();
-        auth.login({login: this.state.login, password: this.state.password})
+        Authorization.login({login: this.state.login, password: this.state.password})
             .then(
                 res => {
                     this.props.addSession(res.data.sessionId);
@@ -41,12 +35,11 @@ export default class LoginForm extends React.Component {
         ;
     }
 
-    setLogin(event) {
-        this.props.addLogin(event.target.value);
-    }
-
-    setPassword(event) {
-        this.props.addPassword(event.target.value);
+    set(event) {
+        const {id, value} = event.target;
+        this.setState({
+            [id]: value
+        })
     }
 
     render() {
@@ -57,10 +50,12 @@ export default class LoginForm extends React.Component {
                         <Col s={4}>
                             <div>
                                 <form onSubmit={this.register}>
-                                    <TextInput placeholder="Login"
-                                               onChange={this.setLogin}/>
-                                    <TextInput password placeholder="Password"
-                                               onChange={this.setPassword}/>
+                                    <TextInput id={'login'}
+                                               placeholder="Login"
+                                               onChange={this.set}/>
+                                    <TextInput id={'password'}
+                                               password placeholder="Password"
+                                               onChange={this.set}/>
                                     <input type='submit' className='btn'/>
                                 </form>
                             </div>

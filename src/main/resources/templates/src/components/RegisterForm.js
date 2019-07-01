@@ -1,5 +1,5 @@
 import React from 'react';
-import auth from '../services/Authorization';
+import {Authorization} from '../services/Authorization';
 import {TextInput, Row, Col} from 'react-materialize';
 import M from '../materialize';
 
@@ -20,15 +20,9 @@ class RegisterForm extends React.Component {
         this.register = this.register.bind(this);
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        this.state = {
-            ...this.props.user
-        };
-    }
-
     register(event) {
         event.preventDefault();
-        auth.register({login: this.state.login, password: this.state.password})
+        Authorization.register({login: this.state.login, password: this.state.password})
             .then(
                 res => {
                     this.props.addSession(res.data.sessionId);
@@ -47,10 +41,10 @@ class RegisterForm extends React.Component {
     }
 
     set(event) {
-        const { id, value } = event;
+        const { id, value } = event.target;
         this.setState({
             [id]: value
-        })
+        }, this.checkPasswords)
     }
 
     checkPasswords() {
@@ -64,7 +58,7 @@ class RegisterForm extends React.Component {
                     <Row>
                         <Col s={4}>
                             <div>
-                                <form onSubmit={this.register}>
+                                <form onSubmit={this.register} style={{color: 'black'}}>
                                     <TextInput id={'login'}
                                                placeholder="Login"
                                                onChange={this.set}/>

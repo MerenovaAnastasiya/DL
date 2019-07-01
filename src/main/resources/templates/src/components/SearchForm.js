@@ -13,7 +13,6 @@ class SearchForm extends React.Component {
     }
 
     findBookByName(event) {
-        console.log('Searching....');
         event.preventDefault();
     }
 
