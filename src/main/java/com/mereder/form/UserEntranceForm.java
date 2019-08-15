@@ -1,17 +1,20 @@
-package com.mereder.forms;
+package com.mereder.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserEntranceForm {
+public abstract class UserEntranceForm {
+
     @NotBlank
-    private  String login;
+    @Size(min = 10)
+    protected String login;
     @NotBlank
-    private  String password;
+    protected String password;
 }

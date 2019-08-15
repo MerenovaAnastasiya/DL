@@ -3043,7 +3043,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleFocus",
       value: function _handleFocus(e) {
-        // Only trap focus if this modal is the last model opened (prevents loops in nested modals).
+        // Only trap focus if this modal is the last pojo opened (prevents loops in nested modals).
         if (!this.el.contains(e.target) && this._nthModalOpened === Modal._modalsOpen) {
           this.el.focus();
         }

@@ -1,4 +1,4 @@
-package com.mereder.errors;
+package com.mereder.error;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class InvalidArgumentExceptionHandler extends ResponseEntityExceptionHand
         for(FieldError error: ex.getBindingResult().getFieldErrors()) {
             errors.put(error.getField(), error.getDefaultMessage());
         }
-        return new ResponseEntity<>(new BadRequest(errors), headers, status);
+        return new ResponseEntity<>(errors, headers, status);
 
     }
 }

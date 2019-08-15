@@ -1,8 +1,8 @@
-package com.mereder.services.impl;
+package com.mereder.service.impl;
 
-import com.mereder.entities.Book;
-import com.mereder.repositories.BookRepository;
-import com.mereder.services.BookService;
+import com.mereder.pojo.Book;
+import com.mereder.repository.BookRepository;
+import com.mereder.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +20,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book getBookByIsbn13(String isbn13) {
         return bookRepository.findBookByIsbn13(isbn13);
+    }
+
+    @Override
+    public void deleteBook(Book book) {
+        bookRepository.delete(book);
     }
 }

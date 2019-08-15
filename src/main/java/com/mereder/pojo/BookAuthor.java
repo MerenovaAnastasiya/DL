@@ -1,4 +1,4 @@
-package com.mereder.entities;
+package com.mereder.pojo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +12,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @Table(name = "author")
-public class BookAuthor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Long id;
+public class BookAuthor extends BaseEntity {
 
     @Column
     @NotNull

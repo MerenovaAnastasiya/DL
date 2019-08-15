@@ -1,8 +1,7 @@
-package com.mereder.entities;
+package com.mereder.pojo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,11 +11,7 @@ import java.util.Set;
 @Data
 @Table
 @NoArgsConstructor
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Long id;
+public class Book extends BaseEntity {
 
     @Column
     @NotNull
@@ -35,4 +30,7 @@ public class Book {
             joinColumns = {@JoinColumn(name = "book_id")},
             inverseJoinColumns = {@JoinColumn(name = "author_id")})
     private Set<BookAuthor> authors;
+
+    @Column(name = "image")
+    private String image;
 }

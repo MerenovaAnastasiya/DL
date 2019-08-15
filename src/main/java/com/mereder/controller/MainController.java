@@ -1,4 +1,4 @@
-package com.mereder.controllers;
+package com.mereder.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
